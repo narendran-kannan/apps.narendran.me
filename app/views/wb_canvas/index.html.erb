@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wb Canvas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Img data</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wb_canvas.each do |wb_canva| %>
+      <tr>
+        <td><%= wb_canva.name %></td>
+        <td><%= wb_canva.img_data %></td>
+        <td><%= link_to 'Show', wb_canva %></td>
+        <td><%= link_to 'Edit', edit_wb_canva_path(wb_canva) %></td>
+        <td><%= link_to 'Destroy', wb_canva, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wb Canva', new_wb_canva_path %>

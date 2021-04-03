@@ -1,0 +1,27 @@
+<%= form_with(model: wb_canva, local: true) do |form| %>
+  <% if wb_canva.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(wb_canva.errors.count, "error") %> prohibited this wb_canva from being saved:</h2>
+
+      <ul>
+        <% wb_canva.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :img_data %>
+    <%= form.text_area :img_data %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
