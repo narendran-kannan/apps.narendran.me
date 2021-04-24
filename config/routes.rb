@@ -10,4 +10,11 @@ Rails.application.routes.draw do
   #
   #   For Online Whiteboard
   # get 'wb/:id', to: 'canvas#show'
+  if ENV['RAILS_ENV'] == 'production'
+    constraints(domain: 'narendran.me') do
+      get '/', to: 'bio#home'
+    end
+  else
+    get '/', to: 'bio#home'
+  end
 end
