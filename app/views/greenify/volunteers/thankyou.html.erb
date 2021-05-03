@@ -1,0 +1,28 @@
+<%= content_for :page_level_style do %>
+  <style>
+      .card {
+          font-family: sans-serif;
+          width: 100%;
+          border-radius: 10px;
+          background-color: #ffff;
+          padding: 2rem;
+          box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .title {
+          text-align: center;
+          font-weight: bold;
+          margin: 0;
+      }
+      .greenify {
+          color: green;
+      }
+  </style>
+<% end %>
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center" style="margin-left: 5px;margin-right: 5px;">
+  <div class="col-md-6 col-sm-12">
+    <div class="card">
+      <h2 class="title"> Thank You for joining.<br><span class="greenify">We'll get back to you soon!!!</span></h2>
+    </div>
+  </div>
+</div>

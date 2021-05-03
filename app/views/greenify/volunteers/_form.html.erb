@@ -1,0 +1,98 @@
+<%= content_for :page_level_style do %>
+  <style>
+      .greenify {
+          color: green;
+      }
+
+      body {
+          background-color: rgb(228, 229, 247);
+      }
+
+      a {
+          text-decoration: none;
+      }
+
+      .card {
+          font-family: sans-serif;
+          width: 100%;
+          border-radius: 10px;
+          background-color: #ffff;
+          padding: 2rem;
+          box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .title {
+          text-align: center;
+          font-weight: bold;
+          margin: 0;
+      }
+
+      .subtitle {
+          padding-top: 10px;
+          text-align: center;
+          font-weight: 500;
+      }
+
+      .or {
+          text-align: center;
+          font-weight: bold;
+          border-bottom: 2px solid rgb(245 239 239);
+          line-height: 0.1em;
+          margin: 25px 0;
+      }
+
+      .or span {
+          background: #fff;
+          padding: 0 10px;
+      }
+
+      .email-login {
+          display: flex;
+          flex-direction: column;
+      }
+
+      .cta-btn {
+          color: white;
+          padding: 18px 20px;
+          margin-top: 10px;
+          margin-bottom: 20px;
+          width: 100%;
+          border-radius: 10px;
+          border: none;
+      }
+
+      .error input {
+          border-color: #dc3545;
+      }
+  </style>
+<% end %>
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center" style="margin-left: 5px;margin-right: 5px;">
+  <div class="col-md-6 col-sm-12">
+    <div class="card">
+      <%= form_for(@greenify_volunteer, url: join_url, local: true) do |form| %>
+        <h2 class="title"> Join <span class="greenify">Greenify</span></h2>
+        <p class="subtitle">Forming a team to take over the internet for a good cause. Become a part of our mass
+          planting (10K trees in Phase-I) project and let's score a win for our planet.</p>
+
+
+        <p class="or"></p>
+        <div class="email-login">
+          <div class="mb-3">
+            <%= form.label :name, class: 'form-label' %>
+            <%= form.text_field :name, class: 'form-control required', required: true %>
+          </div>
+          <%= form.hidden_field :mcode, value: '+91' %>
+          <div class="mb-3">
+            <%= form.label :mobile, class: 'form-label' %>
+            <%= form.text_field :mobile, class: 'form-control required', required: true %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :mail, class: 'form-label' %>
+            <%= form.email_field :mail, class: 'form-control required', required: true %>
+          </div>
+        </div>
+        <button class="btn cta-btn btn-success">Log In</button>
+      <% end %>
+    </div>
+  </div>
+</div>

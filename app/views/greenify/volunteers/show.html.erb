@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @greenify_volunteer.name %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @greenify_volunteer.mobile %>
+</p>
+
+<p>
+  <strong>Mcode:</strong>
+  <%= @greenify_volunteer.mcode %>
+</p>
+
+<p>
+  <strong>Mail:</strong>
+  <%= @greenify_volunteer.mail %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @greenify_volunteer.status %>
+</p>
+
+<%= link_to 'Edit', edit_greenify_volunteer_path(@greenify_volunteer) %> |
+<%= link_to 'Back', greenify_volunteers_path %>

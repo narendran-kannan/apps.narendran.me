@@ -4,10 +4,15 @@ import ActionCable from 'actioncable'
 import { ActionCableProvider, ActionCableConsumer } from 'react-actioncable-provider';
 
 class Canvas extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.actionCable = ActionCable.createConsumer('ws://localhost:3001/cable');
     this.channel = this.actionCable.subscriptions.create({ channel: "WbcanvasChannel", name: "ABCDE" })
+    this.channel.received = (data) => {
+      console.log(data);
+      this.handleChangeByOthers(data)
+      // this.draw(this.canvasref.current.getContext('2d'), data['prev'][0], data['prev'][1], data['x'], data['y'])
+    }
   }
 
   handleChangeByOthers = (data) => {
@@ -19,14 +24,12 @@ class Canvas extends Component {
   }
 
 
-  // this.channel.onmessage = () => {
-  //
-  // }
-
   componentDidMount() {
 
     // const cable = ActionCable.createConsumer('ws://localhost:3001/cable');
-
+    this.channel.connected = () => {
+      console.log("Connected");
+    }
 
   }
 
@@ -90,15 +93,15 @@ class Canvas extends Component {
 
     return (
         <div>
-          <ActionCableProvider cable={this.actionCable}>
+          {/*<ActionCableProvider cable={this.actionCable}>*/}
             <div>
-              <ActionCableConsumer channel={{channel: 'WbcanvasChannel', name: 'ABCDE'}}
-                                   onReceived={this.handleChangeByOthers}/>
+              {/*<ActionCableConsumer channel={{channel: 'WbcanvasChannel', name: 'ABCDE'}}*/}
+              {/*                     onReceived={this.handleChangeByOthers}/>*/}
               <canvas ref={this.canvasref} width={1000} height={500} style={{border: "1px solid"}}
                       onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}
                       onPointerMove={this.handleMouseMove}/>
             </div>
-          </ActionCableProvider>
+          {/*</ActionCableProvider>*/}
         </div>
 
     );

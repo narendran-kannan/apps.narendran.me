@@ -1,0 +1,2 @@
+module Greenify::VolunteersHelper
+end

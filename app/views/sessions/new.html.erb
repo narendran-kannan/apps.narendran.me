@@ -1,0 +1,8 @@
+<%= form_tag('/admin/login') do %>
+  <%= text_field(:user, :email) %>
+  <%= password_field(:user, :password) %>
+  <%= submit_tag('Login', { class: 'btn btn-primary' }) %>
+  <% if flash[:alert] %>
+    <p> <%= flash[:alert] %></p>
+  <% end %>
+<% end %>

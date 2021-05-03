@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Greenify Volunteers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Mcode</th>
+      <th>Mail</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @greenify_volunteers.each do |greenify_volunteer| %>
+      <tr>
+        <td><%= greenify_volunteer.name %></td>
+        <td><%= greenify_volunteer.mobile %></td>
+        <td><%= greenify_volunteer.mcode %></td>
+        <td><%= greenify_volunteer.mail %></td>
+        <td><%= greenify_volunteer.status %></td>
+        <td><%= link_to 'Show', greenify_volunteer %></td>
+        <td><%= link_to 'Edit', edit_greenify_volunteer_path(greenify_volunteer) %></td>
+        <td><%= link_to 'Destroy', greenify_volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Greenify Volunteer', new_greenify_volunteer_path %>

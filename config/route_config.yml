@@ -1,0 +1,10 @@
+development:
+  bio_domain: narendran.local
+  greenify:
+    domain: narendran.local
+    subdomain: greenify
+production:
+  bio_domain: narendran.me
+  greenify:
+    domain: narendran.me
+    subdomain: project-greenify

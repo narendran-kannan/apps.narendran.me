@@ -10,11 +10,26 @@ Rails.application.routes.draw do
   #
   #   For Online Whiteboard
   # get 'wb/:id', to: 'canvas#show'
-  if ENV['RAILS_ENV'] == 'production'
-    constraints(domain: 'narendran.me') do
-      get '/', to: 'bio#home'
-    end
-  else
+  constraints({subdomain: ROUTECONFIG[Rails.env]['greenify']['subdomain'], domain: ROUTECONFIG[Rails.env]['greenify']['domain']}) do
+    get '/', to: 'greenify/volunteers#new'
+    get '/join', to: 'greenify/volunteers#new'
+    post '/join', to: 'greenify/volunteers#create'
+  end
+
+  constraints(domain: ROUTECONFIG[Rails.env]['bio_domain']) do
     get '/', to: 'bio#home'
+
+    get 'admin/login', to: 'sessions#new'
+    post 'admin/login', to: 'sessions#admin_login'
+    namespace 'admin' do
+      resources :blogs
+      resources :categories
+      get '/dashboard', to: 'dashboard#index'
+    end
+
+    # Error Pages
+    get '/401', to: 'pages#unauthorized'
+    get '/404', to: 'pages#not_found'
   end
 end
+
