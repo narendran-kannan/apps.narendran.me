@@ -1,6 +1,7 @@
 module Admin
   class BlogsController < Admin::AdminController
     before_action :set_blog, only: %i[show edit update destroy]
+    before_action :load_categories, only: %i[edit new]
 
     # GET /blogs or /blogs.json
     def index
@@ -26,6 +27,7 @@ module Admin
 
       respond_to do |format|
         if @blog.save
+          update_categories
           format.html { redirect_to admin_blog_url(@blog), notice: "Blog was successfully created." }
           format.json { render :show, status: :created, location: @blog }
         else
@@ -39,6 +41,7 @@ module Admin
     def update
       respond_to do |format|
         if @blog.update(blog_params)
+          update_categories
           format.html { redirect_to admin_blog_url(@blog), notice: "Blog was successfully updated." }
           format.json { render :show, status: :ok, location: @blog }
         else
@@ -66,7 +69,15 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :slug, :content)
+      params.require(:blog).permit(:title, :slug, :content, :featured_image)
+    end
+
+    def load_categories
+      @categories = Category.all
+    end
+
+    def update_categories
+      @blog.categories = Category.where(id: params[:categories])
     end
   end
 end

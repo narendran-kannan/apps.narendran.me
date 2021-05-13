@@ -26,6 +26,14 @@
     <%= form.label :content %>
     <%= form.rich_text_area :content %>
   </div>
+<% selected = blog.categories&.map{|x| [x.id, x.name]} %>
+  <div>
+    <%= select_tag 'categories[]', options_from_collection_for_select(@categories, :id, :name, selected), {multiple: true}%>
+  </div>
+
+  <div>
+    <%= form.file_field(:featured_image) %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

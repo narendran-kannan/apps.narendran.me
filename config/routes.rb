@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     post '/join', to: 'greenify/volunteers#create'
   end
 
-  constraints(domain: ROUTECONFIG[Rails.env]['bio_domain']) do
+  constraints({domain: ROUTECONFIG[Rails.env]['bio_domain'], subdomain: ''}) do
     get '/', to: 'bio#home'
 
     get 'admin/login', to: 'sessions#new'
@@ -30,6 +30,11 @@ Rails.application.routes.draw do
     # Error Pages
     get '/401', to: 'pages#unauthorized'
     get '/404', to: 'pages#not_found'
+  end
+
+  constraints({ domain: ROUTECONFIG[Rails.env]['blog']['domain'], subdomain: ROUTECONFIG[Rails.env]['blog']['subdomain'] }) do
+    get '/', to: 'blogs#index'
+    get 'b/:slug', to: 'blogs#show', as: 'public_blog'
   end
 end
 

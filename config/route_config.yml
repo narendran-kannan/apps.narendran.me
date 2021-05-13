@@ -1,5 +1,8 @@
 development:
   bio_domain: narendran.local
+  blog:
+    domain: narendran.local
+    subdomain: blogs
   greenify:
     domain: narendran.local
     subdomain: greenify
@@ -8,3 +11,6 @@ production:
   greenify:
     domain: narendran.me
     subdomain: project-greenify
+  blog:
+    domain: narendran.me
+    subdomain: blogs

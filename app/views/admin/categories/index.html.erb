@@ -12,9 +12,9 @@
   <tbody>
     <% @admin_categories.each do |admin_category| %>
       <tr>
-        <td><%= link_to 'Show', admin_category %></td>
+        <td><%= link_to 'Show', admin_category_path(admin_category) %></td>
         <td><%= link_to 'Edit', edit_admin_category_path(admin_category) %></td>
-        <td><%= link_to 'Destroy', admin_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', admin_category_path(admin_category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

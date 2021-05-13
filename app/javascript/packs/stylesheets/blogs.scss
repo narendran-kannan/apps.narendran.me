@@ -1,0 +1,117 @@
+// Place all the styles related to the Blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.main-content {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  .main_content_area {
+    margin-top: 70px;
+
+    .col12 {
+      position: relative;
+      min-height: 1px;
+      float: left;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .blog_row {
+      margin-bottom: 80px;
+
+      .blog-banner {
+        width: 50%;
+        margin-bottom: 0;
+        position: relative;
+        min-height: 1px;
+        float: left;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-left: initial;
+        margin-right: initial;
+
+        .blog-home-img {
+          border: 1px solid #f6f6f6;
+          background-color: #f6f6f6;
+        }
+      }
+
+      .blog-body {
+        width: 50%;
+        min-height: 1px;
+        float: left;
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-left: initial;
+        margin-right: initial;
+
+        .body-title {
+          margin-bottom: 12px;
+          padding-bottom: 18px;
+          font-size: 18px;
+          margin-top: 4px;
+          position: relative;
+          line-height: 1.55em;
+        }
+
+        .meta-container {
+          margin-bottom: 12px;
+
+          .blog-meta-row {
+            margin-top: 0;
+
+            .blog-meta-item {
+              color: #999;
+              font-size: 11.5px;
+              display: inline-block;
+              line-height: 14px;
+              margin-right: 12px;
+              letter-spacing: .6px;
+              text-transform: uppercase;
+            }
+
+            .author-name {
+              display: inline-block;
+              font-size: 13px;
+              line-height: 16px;
+
+              .vcard {
+                display: inline-block;
+                font-weight: 700;
+                color: #222;
+              }
+            }
+            .category {
+              a{
+                color: #999;
+              }
+            }
+            .meta-date {
+              letter-spacing: .8px;
+            }
+          }
+        }
+
+        .blog-info-wrapper {
+          .summary {
+            font-size: 14px;
+            line-height: 1.45em;
+            color: #777;
+            letter-spacing: .1px;
+
+            .read-more {
+              margin-top: 12px;
+              .more-link {
+                color: #000;
+                font-size: 15px;
+                line-height: 25px;
+                font-weight: 700;
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -53,9 +53,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  # %w[narendran.local greenify.narendran.local].each {|i| config.hosts << i}
+  %w[narendran.local greenify.narendran.local blogs.narendran.local].each {|i| config.hosts << i}
 
-  config.hosts << 'greenify.narendran.local'
+  # config.hosts << 'greenify.narendran.local'
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 

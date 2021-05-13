@@ -1,31 +1,58 @@
-<p id="notice"><%= notice %></p>
+<%= content_for(:title) do %>
+  Blogs - Narendran
+<% end %>
+<%= content_for(:stylesheets) do %>
+  <%= stylesheet_pack_tag 'stylesheets/blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<main class="main-content">
 
-<h1>Blogs</h1>
+  <section class="container main_content_area">
+    <div class="row">
+      <div class="col-12 col12">
+        <% @blogs.each do |blog| %>
+          <div class="row blog_row">
+            <figure class="blog-banner">
+              <a href="<%= public_blog_path(blog.slug) %>">
+                <% if blog.featured_image.attached? %>
+                  <%= image_tag blog.featured_image.variant(resize_to_limit: [420, 230]), {class: 'blog-home-img'}  %>
+                <% end %>
+              </a>
+            </figure>
+            <div class="blog-body">
+              <div class="body-header">
+                <h3 class="body-title">
+                  <a href="<%= public_blog_path(blog.slug) %>">
+                    <%= blog.title %>
+                  </a>
+                </h3>
+              </div>
+              <div class="meta-container clearfix">
+                <div class="blog-meta-row clearfix">
+                  <span class="blog-meta-item author-name">
+                    <span class="vcard">Narendran</span>
+                  </span>
+                  <span class="blog-meta-item category">
+                    <a href="#"></a>
+                  </span>
+                  <span class="blog-meta-item meta-date">
+                    <%= blog.created_at.strftime("%B %d, %Y") %>
+                  </span>
+                </div>
+              </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Slug</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+              <div class="blog-info-wrapper">
+                <div class="summary">
+                  <%= blog.truncated_content %>
+                  <div class="read-more">
+                    <a href="<%= public_blog_path(blog.slug) %>" class="more-link">Continue Reading</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
 
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.slug %></td>
-        <td><%= blog.content %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_blog_path %>
+</main>

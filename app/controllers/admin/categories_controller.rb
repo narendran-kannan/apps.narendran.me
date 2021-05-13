@@ -26,7 +26,7 @@ module Admin
 
       respond_to do |format|
         if @admin_category.save
-          format.html { redirect_to @admin_category, notice: "Category was successfully created." }
+          format.html { redirect_to admin_categories_url(@admin_category), notice: "Category was successfully created." }
           format.json { render :show, status: :created, location: @admin_category }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ module Admin
     def update
       respond_to do |format|
         if @admin_category.update(admin_category_params)
-          format.html { redirect_to @admin_category, notice: "Category was successfully updated." }
+          format.html { redirect_to admin_categories_url(@admin_category), notice: "Category was successfully updated." }
           format.json { render :show, status: :ok, location: @admin_category }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -61,12 +61,13 @@ module Admin
 
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_category
-      @admin_category = Admin::Category.find(params[:id])
+      @admin_category = Category.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def admin_category_params
-      params.fetch(:admin_category, {})
+      debugger
+      params.require(:category).permit(:name)
     end
   end
 end

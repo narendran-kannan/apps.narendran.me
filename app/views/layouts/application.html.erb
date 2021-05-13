@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narendran - Software Developer</title>
+    <title> <%= content_for?(:title) ? yield(:title) : 'Narendran - Software Engineer' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,6 +13,7 @@
     <%= javascript_pack_tag 'jquery', 'data-turbolinks-track': 'reload'  %>
     <%= javascript_pack_tag 'images', 'data-turbolinks-track': 'reload' %>
     <%= yield :page_level_style %>
+    <%= yield :stylesheets %>
 
   </head>
 

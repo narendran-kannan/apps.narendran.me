@@ -15,5 +15,10 @@
   <%= @blog.content %>
 </p>
 
+<p>
+  <strong>Image:</strong>
+  <%= image_tag(@blog.featured_image) %>
+</p>
+
 <%= link_to 'Edit', edit_admin_blog_path(@blog) %> |
 <%= link_to 'Back', admin_blogs_path %>
