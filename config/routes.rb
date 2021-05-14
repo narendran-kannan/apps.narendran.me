@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   constraints({domain: ROUTECONFIG[Rails.env]['bio_domain'], subdomain: ''}) do
-    get '/', to: 'bio#home'
+    get '/', to: 'bio#home', as: 'bio_home'
 
     get 'admin/login', to: 'sessions#new'
     post 'admin/login', to: 'sessions#admin_login'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   constraints({ domain: ROUTECONFIG[Rails.env]['blog']['domain'], subdomain: ROUTECONFIG[Rails.env]['blog']['subdomain'] }) do
-    get '/', to: 'blogs#index'
+    get '/', to: 'blogs#index', as: 'public_blog_home'
     get 'b/:slug', to: 'blogs#show', as: 'public_blog'
   end
 end

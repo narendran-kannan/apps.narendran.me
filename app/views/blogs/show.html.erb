@@ -1,17 +1,60 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+<%= content_for(:title) do %><%= @blog.title %> - Narendran<% end %>
+<%= content_for(:stylesheets) do %>
+  <%= stylesheet_pack_tag 'icons' %>
+  <%= stylesheet_pack_tag 'stylesheets/blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<%= render partial: 'navbar' %>
+<div class="nav-fix-container"></div>
+<main class="main-content">
+  <section class="container main_content_area" id="blog-section">
+    <div class="row">
+      <div class="col12">
+        <article class="blog_container">
+          <div class="single_post_body">
+            <div class="post_header post_header_single"><h1 class="entry-title title post_title"><%= @blog.title %></h1></div>
+            <div class="post_meta_container post_meta_container_single clearfix">
+            <span class="post_meta_item meta_item_author_avatar">
+              <a class="meta_author_avatar_url" href="#">
+                <%= image_pack_tag 'main.jpeg', class: 'avatar avatar-40', size: '40x40', alt: 'Narendran photo' %>
+              </a>
+            </span>
+              <div class="post_meta_info post_meta_row clearfix">
+              <span class="post_meta_item meta_item_author">
+                <span class="author vcard author_name">
+                  <span class="fn">
+                    <a class="meta_author_name url" href="#">Narendran</a>
+                  </span>
+                </span>
+              </span>
+                <span class="post_meta_item meta_item_category">
+                <a class="post_format_icon_link" href="#">
+                  <i class="fa fa-image post_meta_icon imagepost_fromat_icon"></i>
+                </a>
+                <a href="#" rel="category tag"><%= @blog.categories&.map{|x| x.name}.join(",") %></a>
+              </span>
+                <span class="post_meta_item meta_item_date"><span class="screen-reader-text"></span>
+                  <time class="entry-date published updated"><%= @blog.created_at.strftime("%B %d, %Y") %></time>
+                </span>
+              </div>
+            </div>
+          </div>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @blog.slug %>
-</p>
+          <figure class="post_banner">
+            <%= image_tag @blog.featured_image, width: 901, height: 675 %>
+          </figure>
 
-<p>
-  <strong>Content:</strong>
-  <%= @blog.content %>
-</p>
+          <div class="post_body">
+            <div class="post_wrapper">
+              <div class="blog_post_content">
+                <%= @blog.content %>
+              </div>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
 

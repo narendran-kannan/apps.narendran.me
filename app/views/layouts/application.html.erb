@@ -5,15 +5,25 @@
     <title> <%= content_for?(:title) ? yield(:title) : 'Narendran - Software Engineer' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109354038-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-109354038-2');
+    </script>
+
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'rich_text', 'data-turbolinks-track': 'reload'  %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'jquery', 'data-turbolinks-track': 'reload'  %>
     <%= javascript_pack_tag 'images', 'data-turbolinks-track': 'reload' %>
     <%= yield :page_level_style %>
     <%= yield :stylesheets %>
+    <%= yield :page_level_scripts %>
 
   </head>
 

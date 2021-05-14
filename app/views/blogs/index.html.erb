@@ -2,11 +2,13 @@
   Blogs - Narendran
 <% end %>
 <%= content_for(:stylesheets) do %>
+  <%= stylesheet_pack_tag 'icons' %>
   <%= stylesheet_pack_tag 'stylesheets/blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
 <% end %>
+<%= render partial: 'navbar' %>
 <main class="main-content">
 
-  <section class="container main_content_area">
+  <section class="container main_content_area" id="blog-section">
     <div class="row">
       <div class="col-12 col12">
         <% @blogs.each do |blog| %>
@@ -14,13 +16,13 @@
             <figure class="blog-banner">
               <a href="<%= public_blog_path(blog.slug) %>">
                 <% if blog.featured_image.attached? %>
-                  <%= image_tag blog.featured_image.variant(resize_to_limit: [420, 230]), {class: 'blog-home-img'}  %>
+                  <%= image_tag blog.featured_image.variant(resize_to_limit: [420, 230]), {class: 'blog-home-img', size: '420x230'}  %>
                 <% end %>
               </a>
             </figure>
             <div class="blog-body">
               <div class="body-header">
-                <h3 class="body-title">
+                <h3 class="body-title title">
                   <a href="<%= public_blog_path(blog.slug) %>">
                     <%= blog.title %>
                   </a>
@@ -32,7 +34,7 @@
                     <span class="vcard">Narendran</span>
                   </span>
                   <span class="blog-meta-item category">
-                    <a href="#"></a>
+                    <a href="#"><%= blog.categories&.first&.name %></a>
                   </span>
                   <span class="blog-meta-item meta-date">
                     <%= blog.created_at.strftime("%B %d, %Y") %>
@@ -44,7 +46,9 @@
                 <div class="summary">
                   <%= blog.truncated_content %>
                   <div class="read-more">
-                    <a href="<%= public_blog_path(blog.slug) %>" class="more-link">Continue Reading</a>
+                    <a href="<%= public_blog_path(blog.slug) %>" class="more-link">Continue Reading
+                      <span class="continue_reading_dots"><span class="continue_reading_squares"><span></span><span></span><span></span><span></span></span><i class="fa fa-chevron-right readmore_icon"></i></span>
+                    </a>
                   </div>
                 </div>
               </div>

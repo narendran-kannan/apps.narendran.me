@@ -1,8 +1,12 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+//@import "./stylesheets/font_awesome";
 .home-wrapper{
   .intro-image {
     border-radius: 50%;
     width: 150px;
     height: 150px;
+  }
+  .btn {
+    color: #fff !important;
   }
 }

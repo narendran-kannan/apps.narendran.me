@@ -1,4 +1,6 @@
-<%debugger %>
+<%= content_for :page_level_scripts do %>
+  <%= javascript_pack_tag 'rich_text', 'data-turbolinks-track': 'reload'  %>
+<% end %>
 <%= form_with(model: blog,url: params[:action] == 'edit' ? admin_blog_path(@blog) : admin_blogs_url, method: params[:action] == 'edit' ? 'put' : 'post', local: true) do |form| %>
   <% if blog.errors.any? %>
     <div id="error_explanation">

@@ -7,7 +7,7 @@ class Blog < ApplicationRecord
   before_validation :set_slug, on: %i[create update]
 
   def truncated_content
-    content.to_plain_text.squish.truncate(50)
+    content.to_plain_text.squish.truncate(140)
   end
 
   def set_slug
