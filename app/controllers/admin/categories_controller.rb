@@ -66,7 +66,6 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def admin_category_params
-      debugger
       params.require(:category).permit(:name)
     end
   end
