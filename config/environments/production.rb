@@ -93,6 +93,8 @@ Rails.application.configure do
   config.hosts << 'project-greenify.narendran.me'
   config.hosts << 'blogs.narendran.me'
 
+  config.force_ssl = true
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
