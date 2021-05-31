@@ -1,6 +1,9 @@
 <%= content_for(:title) do %>
   Blogs - Narendran
 <% end %>
+<%= content_for(:ad_script) do %>
+  <script data-ad-client="ca-pub-4288132531552419" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<% end %>
 <%= content_for(:stylesheets) do %>
   <%= stylesheet_pack_tag 'icons' %>
   <%= stylesheet_pack_tag 'stylesheets/blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
